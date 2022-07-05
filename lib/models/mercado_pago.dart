@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class MercadoPago extends StatelessWidget {
   const MercadoPago({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    DateTime now = DateTime.now();
+    String FechaActual = DateFormat('dd MMMM yyyy h:mm').format(now);
     return Scaffold(
       appBar: AppBar(
         leading: Icon(Icons.close_sharp),
@@ -43,7 +46,11 @@ class MercadoPago extends StatelessWidget {
                   title: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("28 julio 2022 a 16:15 hs"),
+                      Text(
+                        DateFormat.yMMMEd().format(DateTime.now()),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
                     ],
                   ),
                 ),
