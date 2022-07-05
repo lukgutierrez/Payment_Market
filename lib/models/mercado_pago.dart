@@ -82,7 +82,7 @@ class MercadoPago extends StatelessWidget {
                       Text("Para"),
                       Divider(),
                       Text(
-                        "Luciano Juan Lopez",
+                        "Luciano Juan Lfz",
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
                       Divider(),
