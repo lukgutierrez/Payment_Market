@@ -12,6 +12,7 @@ class MercadoPago extends StatelessWidget {
         elevation: 0,
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Stack(
             children: [
@@ -35,38 +36,65 @@ class MercadoPago extends StatelessWidget {
               ),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                ListTile(
-                  title: Text("03 julio 2022 a 16:46 hs"),
-                ),
-                Divider(),
-                ListTile(
-                  title: Text("5000"),
-                ),
-                Divider(),
-                ListTile(
-                  subtitle: Text("Ramos Luciano Alvaro"),
-                  title: Text("Para"),
-                ),
-                Row(
-                  children: [
-                    Positioned(
-                        left: 10,
-                        right: 20,
-                        child: Container(child: Text("Banco Macro"))),
-                  ],
-                )
-              ],
-            ),
-          ),
-          Divider(),
-          //BOTONES EN PANTALLAS
           Column(
             children: [
+              Container(
+                child: ListTile(
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("28 julio 2022 a 16:15 hs"),
+                    ],
+                  ),
+                ),
+              ),
+              Divider(
+                color: Colors.black,
+              ),
+              Container(
+                child: ListTile(
+                  title: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "\u0024 5.000",
+                        style: TextStyle(
+                            fontSize: 25.0, fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Divider(),
+              Container(
+                child: ListTile(
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Para"),
+                      Divider(),
+                      Text(
+                        "Luciano Juan Lopez",
+                        style: TextStyle(fontWeight: FontWeight.w700),
+                      ),
+                      Divider(),
+                      Text("Banco Nacion")
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+
+          //BOTONES EN PANTALLAS
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
               ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                  ),
                   onPressed: () {},
                   child: Container(
                     height: 45,
@@ -87,9 +115,10 @@ class MercadoPago extends StatelessWidget {
                   )),
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
+                      elevation: 0,
                       primary: Color(
-                    0xffE3F0F8,
-                  )),
+                        0xffE3F0F8,
+                      )),
                   onPressed: () {},
                   child: Container(
                     height: 45,
@@ -109,9 +138,10 @@ class MercadoPago extends StatelessWidget {
                   )),
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
+                      elevation: 0,
                       primary: Color(
-                    0xffFFFFFF,
-                  )),
+                        0xffFFFFFF,
+                      )),
                   onPressed: () {},
                   child: Container(
                     height: 45,
