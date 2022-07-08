@@ -24,18 +24,18 @@ class MercadoPago extends StatelessWidget {
         children: [
           //ETAPA N°1
           Transferencia(),
-          //ETAPA N° 2
+          //CARGA DE DATOS
           Column(
             children: [
-              //OBJETO N° 1
+              //DATO N° 1
               Date(FechaActual),
               Divider(
                 color: Colors.black,
               ),
-              //OBJETO N° 2
+              //DATO N° 2
               Date(monto),
               Divider(),
-              //OBJETO N° 3
+              //DATO N° 3
               Container(
                 child: ListTile(
                   title: Column(
@@ -55,7 +55,6 @@ class MercadoPago extends StatelessWidget {
               ),
             ],
           ),
-          //FIN ETAPA N°2
 
           //BOTONES EN PANTALLAS
           Column(
@@ -90,7 +89,7 @@ class MercadoPago extends StatelessWidget {
                     0xffE3F0F8,
                   ),
                   () {},
-                  "holo"),
+                  "Hacer otra trasferencia"),
               //BOTON N° 3
               Botones(
                   Color(
@@ -100,7 +99,7 @@ class MercadoPago extends StatelessWidget {
                   context,
                   MaterialPageRoute(builder: (context) => HomePage()),
                 );
-              }, "REW")
+              }, "Ir al inicio")
             ],
           ),
         ],
@@ -135,7 +134,7 @@ Transferencia() {
   );
 }
 
-//OBJETO N° 1
+//DATOS
 Date(Datos) {
   return Container(
     child: ListTile(
