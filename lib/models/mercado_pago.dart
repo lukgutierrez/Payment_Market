@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:mercado_pago/pages/home_page.dart';
 
 class MercadoPago extends StatelessWidget {
   final String monto;
   final String para;
   final String banco;
-  const MercadoPago(this.monto,this.para,this.banco);
+  const MercadoPago(this.monto, this.para, this.banco);
 
   @override
   Widget build(BuildContext context) {
@@ -21,63 +22,20 @@ class MercadoPago extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Stack(
-            children: [
-              Container(
-                height: 75.0,
-                color: Color(0xff00A650),
-              ),
-              Positioned(
-                bottom: 0.5,
-                left: 20.0,
-                child: Row(
-                  children: [
-                    Text("Ya enviamos tu transferencia",
-                        style: TextStyle(color: Colors.white, fontSize: 20.0)),
-                    SizedBox(
-                        width: 100.0,
-                        height: 100.0,
-                        child: Image(image: AssetImage("assets/banck.png")))
-                  ],
-                ),
-              ),
-            ],
-          ),
+          //ETAPA N°1
+          Transferencia(),
+          //ETAPA N° 2
           Column(
             children: [
-              Container(
-                child: ListTile(
-                  title: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        FechaActual,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              //OBJETO N° 1
+              Date(FechaActual),
               Divider(
                 color: Colors.black,
               ),
-              Container(
-                child: ListTile(
-                  title: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        monto,
-                        style: TextStyle(
-                            fontSize: 25.0, fontWeight: FontWeight.w500),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              //OBJETO N° 2
+              Date(monto),
               Divider(),
+              //OBJETO N° 3
               Container(
                 child: ListTile(
                   title: Column(
@@ -97,11 +55,13 @@ class MercadoPago extends StatelessWidget {
               ),
             ],
           ),
+          //FIN ETAPA N°2
 
           //BOTONES EN PANTALLAS
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              //BOTON N°1
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     elevation: 0,
@@ -124,56 +84,94 @@ class MercadoPago extends StatelessWidget {
                       ],
                     ),
                   )),
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      elevation: 0,
-                      primary: Color(
-                        0xffE3F0F8,
-                      )),
-                  onPressed: () {},
-                  child: Container(
-                    height: 45,
-                    width: 300.0,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "Hacer otra transferencia",
-                            style: TextStyle(color: Colors.blue),
-                          ),
-                        ),
-                      ],
-                    ),
-                  )),
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      elevation: 0,
-                      primary: Color(
-                        0xffFFFFFF,
-                      )),
-                  onPressed: () {},
-                  child: Container(
-                    height: 45,
-                    width: 300.0,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "Ir al inicio",
-                            style: TextStyle(color: Colors.blue),
-                          ),
-                        ),
-                      ],
-                    ),
-                  )),
+              //BOTON N° 2
+              Botones(
+                  Color(
+                    0xffE3F0F8,
+                  ),
+                  () {},
+                  "holo"),
+              //BOTON N° 3
+              Botones(
+                  Color(
+                    0xffFFFFFF,
+                  ), () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                );
+              }, "REW")
             ],
           ),
         ],
       ),
     );
   }
+}
+
+//ETAPA N° 1
+Transferencia() {
+  return Stack(
+    children: [
+      Container(
+        height: 75.0,
+        color: Color(0xff00A650),
+      ),
+      Positioned(
+        bottom: 0.5,
+        left: 20.0,
+        child: Row(
+          children: [
+            Text("Ya enviamos tu transferencia",
+                style: TextStyle(color: Colors.white, fontSize: 20.0)),
+            SizedBox(
+                width: 100.0,
+                height: 100.0,
+                child: Image(image: AssetImage("assets/banck.png")))
+          ],
+        ),
+      ),
+    ],
+  );
+}
+
+//OBJETO N° 1
+Date(Datos) {
+  return Container(
+    child: ListTile(
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            Datos,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+//BOTONES
+
+Botones(colores, pagina, texxto) {
+  return ElevatedButton(
+      style: ElevatedButton.styleFrom(elevation: 0, primary: colores),
+      onPressed: pagina,
+      child: Container(
+        height: 45,
+        width: 300.0,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                texxto,
+                style: TextStyle(color: Colors.blue),
+              ),
+            ),
+          ],
+        ),
+      ));
 }
