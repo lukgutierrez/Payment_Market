@@ -9,6 +9,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  TextEditingController _monto = TextEditingController(text: "");
+  TextEditingController _para = TextEditingController(text: "");
+  TextEditingController _banco = TextEditingController(text: "");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,17 +20,25 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            TextField(controller: _monto),
+            TextField(
+              controller: _para,
+            ),
+            TextField(
+              controller: _banco,
+            ),
             ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => MercadoPago()),
+                    MaterialPageRoute(
+                        builder: (context) => MercadoPago(_monto.text,_para.text,_banco.text)),
                   );
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(6.0),
                   child: Container(
-                    child: Text("Hello Pro"),
+                    child: Text("INGRESAR"),
                   ),
                 ))
           ],

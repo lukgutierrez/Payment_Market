@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class MercadoPago extends StatelessWidget {
-  const MercadoPago({Key? key}) : super(key: key);
+  final String monto;
+  final String para;
+  final String banco;
+  const MercadoPago(this.monto,this.para,this.banco);
 
   @override
   Widget build(BuildContext context) {
     DateTime now = DateTime.now();
-    String FechaActual = DateFormat('dd MMMM yyyy h:mm').format(now);
+    String FechaActual =
+        DateFormat("d MMMM yyyy 'a' HH:mm 'hs.'", 'es_ES').format(now);
     return Scaffold(
       appBar: AppBar(
         leading: Icon(Icons.close_sharp),
@@ -47,7 +51,7 @@ class MercadoPago extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        DateFormat.yMMMEd().format(DateTime.now()),
+                        FechaActual,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
@@ -65,7 +69,7 @@ class MercadoPago extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "\u0024 5.000",
+                        monto,
                         style: TextStyle(
                             fontSize: 25.0, fontWeight: FontWeight.w500),
                       ),
@@ -82,11 +86,11 @@ class MercadoPago extends StatelessWidget {
                       Text("Para"),
                       Divider(),
                       Text(
-                        "Luciano Juan Lfz",
+                        para,
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
                       Divider(),
-                      Text("Banco Nacion")
+                      Text(banco)
                     ],
                   ),
                 ),
