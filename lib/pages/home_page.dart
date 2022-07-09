@@ -15,88 +15,94 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            height: 150.0,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: Color(0xFF00B1EA),
-              borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(50),
-                bottomLeft: Radius.circular(50),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              height: 150.0,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Color(0xFF00B1EA),
+                borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(50),
+                  bottomLeft: Radius.circular(50),
+                ),
+              ),
+              alignment: Alignment.center,
+              child: SizedBox(
+                  width: 150.0,
+                  height: 150.0,
+                  child: Image(image: AssetImage("assets/market.webp"))),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Container(
+                height: 300.0,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    TextField(
+                      controller: _monto,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          hintText: "Monto:",
+                          hintStyle: TextStyle(
+                              fontWeight: FontWeight.w300,
+                              color: Colors.black)),
+                    ),
+                    TextField(
+                      controller: _para,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          hintText: "Para:",
+                          hintStyle: TextStyle(
+                              fontWeight: FontWeight.w300,
+                              color: Colors.black)),
+                    ),
+                    TextField(
+                      controller: _banco,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          hintText: "Banco:",
+                          hintStyle: TextStyle(
+                              fontWeight: FontWeight.w300,
+                              color: Colors.black)),
+                    ),
+                  ],
+                ),
               ),
             ),
-            alignment: Alignment.center,
-            child: SizedBox(
-                width: 150.0,
-                height: 150.0,
-                child: Image(image: AssetImage("assets/market.webp"))),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Container(
-              height: 300.0,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  TextField(
-                    controller: _monto,
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        hintText: "Monto:",
-                        hintStyle: TextStyle(
-                            fontWeight: FontWeight.w300, color: Colors.black)),
-                  ),
-                  TextField(
-                    controller: _para,
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        hintText: "Para:",
-                        hintStyle: TextStyle(
-                            fontWeight: FontWeight.w300, color: Colors.black)),
-                  ),
-                  TextField(
-                    controller: _banco,
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        hintText: "Banco:",
-                        hintStyle: TextStyle(
-                            fontWeight: FontWeight.w300, color: Colors.black)),
-                  ),
-                ],
+            SizedBox(
+              height: 40.0,
+              width: 200.0,
+              child: ElevatedButton(
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(Color(0xFF00B1EA)),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                    ))),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            MercadoPago(_monto.text, _para.text, _banco.text)),
+                  );
+                },
+                child: Text("INGRESAR"),
               ),
             ),
-          ),
-          SizedBox(
-            height: 50.0,
-            width: 200.0,
-            child: ElevatedButton(
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Color(0xFF00B1EA)),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50.0),
-                  ))),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          MercadoPago(_monto.text, _para.text, _banco.text)),
-                );
-              },
-              child: Text("INGRESAR"),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

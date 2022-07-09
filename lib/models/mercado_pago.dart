@@ -27,16 +27,19 @@ class MercadoPago extends StatelessWidget {
           //CARGA DE DATOS
           Expanded(
             child: Container(
-              color: Colors.amber,
               child: Column(
                 children: [
                   //DATO N° 1
-                  Date(FechaActual),
-                  Divider(
-                    color: Colors.black,
+                  Date(
+                    FechaActual,
+                    TextStyle(fontWeight: FontWeight.w400, fontSize: 16.0),
                   ),
+                  Divider(),
                   //DATO N° 2
-                  Date(monto),
+                  Date(
+                    monto,
+                    TextStyle(fontWeight: FontWeight.w600, fontSize: 22.0),
+                  ),
                   Divider(),
                   //DATO N° 3
                   Container(
@@ -44,14 +47,29 @@ class MercadoPago extends StatelessWidget {
                       title: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Para"),
-                          Divider(),
+                          Text(
+                            "Para",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xff8B8B8B)),
+                          ),
+                          Divider(
+                            color: Colors.transparent,
+                          ),
                           Text(
                             para,
-                            style: TextStyle(fontWeight: FontWeight.w700),
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600, fontSize: 16.0),
                           ),
-                          Divider(),
-                          Text(banco)
+                          Divider(
+                            color: Colors.transparent,
+                          ),
+                          Text(
+                            banco,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xff8B8B8B)),
+                          )
                         ],
                       ),
                     ),
@@ -63,7 +81,6 @@ class MercadoPago extends StatelessWidget {
 
           //BOTONES EN PANTALLAS
           Container(
-            color: Colors.black,
             height: 150.0,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -144,16 +161,13 @@ Transferencia() {
 }
 
 //DATOS
-Date(Datos) {
+Date(Datos, Letra) {
   return Container(
     child: ListTile(
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            Datos,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-          ),
+          Text(Datos, style: Letra),
         ],
       ),
     ),
