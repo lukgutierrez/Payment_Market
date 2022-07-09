@@ -85,7 +85,7 @@ class MercadoPago extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                //BOTON N°1
+                //BOTON N°15
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
@@ -93,7 +93,7 @@ class MercadoPago extends StatelessWidget {
                     onPressed: () {},
                     child: Container(
                       height: 45,
-                      width: 300.0,
+                      width: 340.0,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -149,6 +149,9 @@ Transferencia() {
           children: [
             Text("Ya enviamos tu transferencia",
                 style: TextStyle(color: Colors.white, fontSize: 20.0)),
+            Container(
+              width: 30.0,
+            ),
             SizedBox(
                 width: 100.0,
                 height: 100.0,
@@ -182,7 +185,7 @@ Botones(colores, pagina, texxto) {
       onPressed: pagina,
       child: Container(
         height: 45,
-        width: 300.0,
+        width: 340.0,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
