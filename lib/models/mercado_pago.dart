@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:mercado_pago/models/pdf_comprobante.dart';
 import 'package:mercado_pago/pages/home_page.dart';
 
 class MercadoPago extends StatelessWidget {
   final String monto;
   final String para;
   final String banco;
-  const MercadoPago(this.monto, this.para, this.banco);
+  final String cbu;
+  const MercadoPago(this.monto, this.para, this.banco ,this.cbu);
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +92,15 @@ class MercadoPago extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
                     ),
-                    onPressed: () {},
+                    onPressed: () async {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              PdfComprobante(monto, para, banco ,cbu),
+                        ),
+                      );
+                    },
                     child: Container(
                       height: 45,
                       width: 340.0,

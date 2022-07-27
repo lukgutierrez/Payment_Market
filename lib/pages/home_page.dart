@@ -12,6 +12,7 @@ class _HomePageState extends State<HomePage> {
   TextEditingController _monto = TextEditingController(text: "");
   TextEditingController _para = TextEditingController(text: "");
   TextEditingController _banco = TextEditingController(text: "");
+  TextEditingController _cbu = TextEditingController(text: "");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,6 +66,17 @@ class _HomePageState extends State<HomePage> {
                               color: Colors.black)),
                     ),
                     TextField(
+                      controller: _cbu,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          hintText: "CBU:",
+                          hintStyle: TextStyle(
+                              fontWeight: FontWeight.w300,
+                              color: Colors.black)),
+                    ),
+                    TextField(
                       controller: _banco,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -95,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            MercadoPago(_monto.text, _para.text, _banco.text)),
+                            MercadoPago(_monto.text, _para.text, _banco.text,_cbu.text)),
                   );
                 },
                 child: Text("INGRESAR"),
