@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:mercado_pago/models/pdf_comprobante.dart';
+
 import 'package:mercado_pago/pages/home_page.dart';
 import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:pdf/pdf.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/widgets.dart' as pw;
-import 'package:pdf_viewer_plugin/pdf_viewer_plugin.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:intl/intl.dart';
-
 import 'package:printing/printing.dart';
 
 class MercadoPago extends StatelessWidget {
@@ -18,7 +15,8 @@ class MercadoPago extends StatelessWidget {
   final String para;
   final String banco;
   final String cbu;
-  const MercadoPago(this.monto, this.para, this.banco, this.cbu);
+  final path;
+  const MercadoPago(this.monto, this.para, this.banco, this.cbu,this.path);
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +87,7 @@ class MercadoPago extends StatelessWidget {
                         children: [
                           pw.Text("Trasferencia",
                               style: pw.TextStyle(fontSize: 20.0, font: font2)),
-                          pw.Text(monto,
+                          pw.Text("\$ $monto",
                               style: pw.TextStyle(fontSize: 40.0, font: font))
                         ]),
                   ),
@@ -153,7 +151,7 @@ class MercadoPago extends StatelessWidget {
                                           style: pw.TextStyle(
                                               fontSize: 25.0, font: font)),
                                       pw.Row(children: [
-                                        pw.Text("CBU : ",
+                                        pw.Text("CBU / CVU : ",
                                             style: pw.TextStyle(
                                                 fontSize: 18.0, font: font2)),
                                         pw.Text(cbu,
@@ -242,10 +240,24 @@ class MercadoPago extends StatelessWidget {
                   ),
                   Divider(),
                   //DATO N° 2
-                  Date(
-                    monto,
-                    TextStyle(fontWeight: FontWeight.w600, fontSize: 22.0),
+                  Container(
+                    child: ListTile(
+                      title: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "\$ $monto",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600, fontSize: 22.0),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
+                  // Date(
+                  //   monto,
+                  //   TextStyle(fontWeight: FontWeight.w600, fontSize: 22.0),
+                  // ),
                   Divider(),
                   //DATO N° 3
                   Container(
@@ -298,14 +310,8 @@ class MercadoPago extends StatelessWidget {
                     ),
                     onPressed: () async {
                       var path = await generatePdf();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => PdfViewer(
-                            path: path,
-                          ),
-                        ),
-                      );
+                      Share.shareFiles([path]);
+                     
                     },
                     child: Container(
                       height: 45,
