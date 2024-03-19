@@ -1,16 +1,8 @@
-# mercado_pago
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# PAYMENT MARKET
+![CampMickey](https://res.cloudinary.com/dkqlc9iga/image/upload/v1710858052/apps/g7f4zomthu2eo9x5tfxc.jpg)
+![CampMickey](https://res.cloudinary.com/dkqlc9iga/image/upload/v1710858052/apps/w5lzm7ve436e0zjoi5ek.jpg)
+# VIDEO DE LA APP
+[Mira el video](https://www.canva.com/design/DAF_lVW7sAY/87IwM59N1AENoTu40SF-Yw/watch?utm_content=DAF_lVW7sAY&utm_campaign=designshare&utm_medium=link&utm_source=editor)
+# DESCARGAR APP
+[Descargar app en la play store](https://play.google.com/store/apps/details?id=com.autoditac.subtivios)
+# @LUKGTZ
